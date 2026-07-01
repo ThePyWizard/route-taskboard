@@ -49,17 +49,27 @@ export async function createProfile(name: string, email: string) {
   return { ok: true };
 }
 
-export async function selectProfile(profileId: string) {
+// Reconnect a returning user whose cookie was cleared. We look them up by the
+// email they typed rather than exposing the profile directory. Honor-system,
+// like the rest of this no-auth app — not a security boundary.
+export async function continueByEmail(email: string) {
+  const cleanEmail = email.trim().toLowerCase();
+  if (!cleanEmail) return { error: "Please enter your email." };
+
   const admin = createAdminClient();
   const { data } = await admin
     .from("profiles")
     .select("id")
-    .eq("id", profileId)
-    .maybeSingle();
-  if (!data) return { error: "Profile not found." };
+    .eq("email", cleanEmail)
+    .order("created_at", { ascending: true })
+    .limit(1);
+  const profile = data?.[0];
+  if (!profile) {
+    return { error: "No profile found for that email. Create one above." };
+  }
 
   const jar = await cookies();
-  jar.set(PROFILE_COOKIE, profileId, {
+  jar.set(PROFILE_COOKIE, profile.id, {
     httpOnly: true,
     sameSite: "lax",
     maxAge: 60 * 60 * 24 * 365,
@@ -203,6 +213,19 @@ export async function getDownloadUrl(path: string) {
       Key: path,
       ResponseContentDisposition: `attachment; filename="${filename}"`,
     }),
+    { expiresIn: 60 * 60 }
+  );
+  return { url };
+}
+
+// Inline (streamable) URL for watching an upload in the browser — no attachment
+// disposition, so <video> plays it in place. Available to any signed-in profile
+// so employees can preview each other's exports on the showcase, not just admins.
+export async function getPreviewUrl(path: string) {
+  await requireProfile();
+  const url = await getSignedUrl(
+    r2(),
+    new GetObjectCommand({ Bucket: R2_BUCKET, Key: path }),
     { expiresIn: 60 * 60 }
   );
   return { url };

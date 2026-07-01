@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import type { Route } from "@/lib/types";
 import { StatusBadge } from "./StatusBadge";
 import { DownloadButton } from "./DownloadButton";
+import { VideoPreview } from "./VideoPreview";
 import { adminMarkDone, adminReleaseRoute } from "@/app/actions";
 
 export function AdminRow({ route }: { route: Route }) {
@@ -42,6 +43,12 @@ export function AdminRow({ route }: { route: Route }) {
       </td>
       <td className="py-2 pr-2 text-right">
         <div className="flex justify-end gap-2">
+          {route.video_path && (
+            <VideoPreview
+              path={route.video_path}
+              title={`#${route.id} ${route.title}`}
+            />
+          )}
           {route.video_path && <DownloadButton path={route.video_path} />}
           {route.status === "uploaded" && (
             <button

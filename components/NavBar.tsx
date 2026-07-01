@@ -22,6 +22,9 @@ export function NavBar({
           <Link href="/my" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
             My routes
           </Link>
+          <Link href="/showcase" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+            Showcase
+          </Link>
           {isAdmin && (
             <Link
               href="/admin"
