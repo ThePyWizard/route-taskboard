@@ -26,27 +26,29 @@ async function requireAdmin() {
 
 export async function createProfile(name: string, email: string) {
   const trimmed = name.trim();
-  if (!trimmed) return { error: "Please enter your name." };
+  if (!trimmed) return { ok: false as const, error: "Please enter your name." };
+
+  const cleanEmail = email.trim().toLowerCase();
+  if (!cleanEmail) return { ok: false as const, error: "Please enter your email." };
+  // Basic shape check — this is a courtesy, not a security boundary.
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail))
+    return { ok: false as const, error: "Please enter a valid email address." };
 
   const admin = createAdminClient();
-  const cleanEmail = email.trim().toLowerCase() || null;
-  const isAdmin = cleanEmail ? adminEmails().includes(cleanEmail) : false;
+  const isAdmin = adminEmails().includes(cleanEmail);
 
   const { data, error } = await admin
     .from("profiles")
     .insert({ name: trimmed, email: cleanEmail, is_admin: isAdmin })
     .select()
     .single();
-  if (error) return { error: error.message };
+  if (error) return { ok: false as const, error: error.message };
 
-  const jar = await cookies();
-  jar.set(PROFILE_COOKIE, data.id, {
-    httpOnly: true,
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 365,
-    path: "/",
-  });
-  return { ok: true };
+  await setProfileCookie(data.id);
+  // Return id + name so the browser can remember this profile locally and offer
+  // a one-tap "Continue as …" next time (see JoinForm) — without ever exposing
+  // the full directory to other people.
+  return { ok: true as const, profile: { id: data.id as string, name: data.name as string } };
 }
 
 // Reconnect a returning user whose cookie was cleared. We look them up by the
@@ -54,28 +56,50 @@ export async function createProfile(name: string, email: string) {
 // like the rest of this no-auth app — not a security boundary.
 export async function continueByEmail(email: string) {
   const cleanEmail = email.trim().toLowerCase();
-  if (!cleanEmail) return { error: "Please enter your email." };
+  if (!cleanEmail) return { ok: false as const, error: "Please enter your email." };
 
   const admin = createAdminClient();
   const { data } = await admin
     .from("profiles")
-    .select("id")
+    .select("id,name")
     .eq("email", cleanEmail)
     .order("created_at", { ascending: true })
     .limit(1);
   const profile = data?.[0];
   if (!profile) {
-    return { error: "No profile found for that email. Create one above." };
+    return {
+      ok: false as const,
+      error: "No profile found for that email. Create one above.",
+    };
   }
 
+  await setProfileCookie(profile.id);
+  return { ok: true as const, profile: { id: profile.id as string, name: profile.name as string } };
+}
+
+// Re-select a profile the browser has used before (id comes from the visitor's
+// own localStorage, never a public listing). Verifies the profile still exists.
+export async function selectProfile(profileId: string) {
+  const admin = createAdminClient();
+  const { data } = await admin
+    .from("profiles")
+    .select("id,name")
+    .eq("id", profileId)
+    .maybeSingle();
+  if (!data) return { ok: false as const, error: "That profile no longer exists." };
+
+  await setProfileCookie(data.id);
+  return { ok: true as const, profile: { id: data.id as string, name: data.name as string } };
+}
+
+async function setProfileCookie(id: string) {
   const jar = await cookies();
-  jar.set(PROFILE_COOKIE, profile.id, {
+  jar.set(PROFILE_COOKIE, id, {
     httpOnly: true,
     sameSite: "lax",
     maxAge: 60 * 60 * 24 * 365,
     path: "/",
   });
-  return { ok: true };
 }
 
 export async function switchProfile() {
