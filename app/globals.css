@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f3ec; /* warm atlas paper */
+  --panel: #ffffff;
+  --panel-2: #fbfaf6;
+  --border: #e8e2d6;
+  --text: #35312a; /* warm body ink */
+  --ink: #17130d; /* strong headings/emphasis */
+  --muted: #928a7b; /* warm gray */
+  --accent: #d8433f; /* brand red (primary actions) */
+  --accent-ink: #b5322f;
+  --maps: #0f7a5a; /* emerald — navigation/maps */
+  --maps-ink: #0b5c44;
+  --ring: rgba(216, 67, 63, 0.35);
+  --shadow-sm: 0 1px 2px rgba(41, 33, 20, 0.04), 0 1px 3px rgba(41, 33, 20, 0.06);
+  --shadow-md: 0 6px 16px rgba(41, 33, 20, 0.08), 0 2px 6px rgba(41, 33, 20, 0.05);
+  --shadow-lg: 0 18px 40px rgba(41, 33, 20, 0.14);
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Soft map-tinted atmosphere in the corners */
+body {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(1100px 560px at 100% -12%, rgba(216, 67, 63, 0.06), transparent 60%),
+    radial-gradient(920px 520px at -10% 112%, rgba(15, 122, 90, 0.06), transparent 58%);
+  background-attachment: fixed;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+.font-body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Give every "panel" surface a subtle, consistent lift automatically. */
+[class*="(--panel)"] {
+  box-shadow: var(--shadow-sm);
+}
