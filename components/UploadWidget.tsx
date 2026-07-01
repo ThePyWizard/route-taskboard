@@ -41,10 +41,12 @@ export function UploadWidget({
   const [progress, setProgress] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   async function upload() {
     if (!file) return;
     setError(null);
+    setSuccess(false);
     setBusy(true);
     setProgress(0);
     try {
@@ -59,6 +61,9 @@ export function UploadWidget({
       const res = await markUploaded(routeId, signed.key, notes);
       if (res?.error) throw new Error(res.error);
 
+      setSuccess(true);
+      setProgress(null);
+      setFile(null);
       router.refresh();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Upload failed");
@@ -81,7 +86,10 @@ export function UploadWidget({
           type="file"
           accept="video/mp4,video/quicktime,video/*"
           className="hidden"
-          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+          onChange={(e) => {
+            setFile(e.target.files?.[0] ?? null);
+            setSuccess(false);
+          }}
         />
         <span className="text-sm">
           {file ? <b>{file.name}</b> : <>Click to choose a video file</>}
@@ -117,12 +125,25 @@ export function UploadWidget({
 
       {error && <p className="mt-3 text-sm text-[var(--accent)]">{error}</p>}
 
+      {success && (
+        <p className="mt-3 flex items-center gap-2 rounded-lg border border-emerald-600/20 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800">
+          <span>✓</span>
+          Upload successful — the editor has your export. Thank you!
+        </p>
+      )}
+
       <button
         onClick={upload}
         disabled={!file || busy}
         className="mt-4 w-full rounded-xl bg-[var(--accent)] px-4 py-3 font-semibold text-white shadow-[var(--shadow-sm)] transition-all duration-200 hover:bg-[var(--accent-ink)] hover:shadow-[var(--shadow-md)] disabled:opacity-50"
       >
-        {busy ? "Uploading…" : hasExisting ? "Replace export" : "Upload export"}
+        {busy
+          ? "Uploading…"
+          : success
+            ? "Uploaded ✓"
+            : hasExisting
+              ? "Replace export"
+              : "Upload export"}
       </button>
     </div>
   );

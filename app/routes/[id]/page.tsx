@@ -153,6 +153,15 @@ export default async function RouteDetail({
             </>
           )}
         </section>
+
+        <div className="mt-10 border-t border-[var(--border)] pt-6">
+          <Link
+            href="/"
+            className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
+          >
+            ← Back to routes
+          </Link>
+        </div>
       </main>
     </div>
   );
