@@ -14,7 +14,7 @@ export function NavBar({
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <nav className="flex items-center gap-6 text-sm font-medium">
           <Link href="/" className="font-display text-lg font-semibold text-[var(--ink)]">
-            <span className="mr-1.5">🗺️</span> Routes
+            MOTWR
           </Link>
           {/* Browse, Showcase and Admin are hidden on mobile to keep the bar from
               stretching; My routes + Leaderboard stay visible on every screen. */}
@@ -22,7 +22,7 @@ export function NavBar({
             Browse
           </Link>
           <Link href="/my" className="rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-1.5 text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
-            My routes
+            Exports
           </Link>
           <Link href="/showcase" className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline">
             Showcase
