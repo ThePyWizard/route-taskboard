@@ -25,6 +25,9 @@ export function NavBar({
           <Link href="/showcase" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
             Showcase
           </Link>
+          <Link href="/leaderboard" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+            Leaderboard
+          </Link>
           {isAdmin && (
             <Link
               href="/admin"
