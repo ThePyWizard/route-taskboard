@@ -16,13 +16,15 @@ export function NavBar({
           <Link href="/" className="font-display text-lg font-semibold text-[var(--ink)]">
             <span className="mr-1.5">🗺️</span> Route Taskboard
           </Link>
-          <Link href="/" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+          {/* Browse, Showcase and Admin are hidden on mobile to keep the bar from
+              stretching; My routes + Leaderboard stay visible on every screen. */}
+          <Link href="/" className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline">
             Browse
           </Link>
           <Link href="/my" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
             My routes
           </Link>
-          <Link href="/showcase" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+          <Link href="/showcase" className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline">
             Showcase
           </Link>
           <Link href="/leaderboard" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
@@ -31,7 +33,7 @@ export function NavBar({
           {isAdmin && (
             <Link
               href="/admin"
-              className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
+              className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline"
             >
               Admin
             </Link>
