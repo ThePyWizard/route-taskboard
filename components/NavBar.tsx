@@ -14,20 +14,20 @@ export function NavBar({
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <nav className="flex items-center gap-6 text-sm font-medium">
           <Link href="/" className="font-display text-lg font-semibold text-[var(--ink)]">
-            <span className="mr-1.5">🗺️</span> Route Taskboard
+            <span className="mr-1.5">🗺️</span> Routes
           </Link>
           {/* Browse, Showcase and Admin are hidden on mobile to keep the bar from
               stretching; My routes + Leaderboard stay visible on every screen. */}
           <Link href="/" className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline">
             Browse
           </Link>
-          <Link href="/my" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+          <Link href="/my" className="rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-1.5 text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
             My routes
           </Link>
           <Link href="/showcase" className="hidden text-[var(--muted)] transition-colors hover:text-[var(--ink)] sm:inline">
             Showcase
           </Link>
-          <Link href="/leaderboard" className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
+          <Link href="/leaderboard" className="rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-1.5 text-[var(--muted)] transition-colors hover:text-[var(--ink)]">
             Leaderboard
           </Link>
           {isAdmin && (
