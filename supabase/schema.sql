@@ -25,6 +25,7 @@ create table if not exists public.profiles (
 create table if not exists public.routes (
   id                      integer primary key,
   title                   text not null,
+  subtitle                text,
   origin                  text not null,
   destination             text not null,
   waypoints               jsonb not null default '[]'::jsonb,
@@ -45,6 +46,9 @@ create table if not exists public.routes (
   created_at              timestamptz not null default now(),
   updated_at              timestamptz not null default now()
 );
+
+-- Additive migrations for tables that already exist (idempotent).
+alter table public.routes add column if not exists subtitle text;
 
 create index if not exists routes_status_idx on public.routes (status);
 create index if not exists routes_assigned_idx on public.routes (assigned_to);

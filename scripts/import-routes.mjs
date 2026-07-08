@@ -31,6 +31,7 @@ if (!Array.isArray(source)) {
 const rows = source.map((r) => ({
   id: r.id,
   title: r.title,
+  subtitle: r.subtitle ?? null,
   origin: r.origin,
   destination: r.destination,
   waypoints: r.waypoints ?? [],

@@ -2,6 +2,7 @@
   {
     "id": 190,
     "title": "Chicago to Santa Monica (Route 66 Centennial)",
+    "subtitle": "2,448 miles by road",
     "origin": "Chicago, IL",
     "destination": "Santa Monica, CA",
     "waypoints": [
@@ -23,6 +24,7 @@
   {
     "id": 191,
     "title": "Las Vegas to Zion (Hidden Side of the West)",
+    "subtitle": "165 miles by road",
     "origin": "Las Vegas, NV",
     "destination": "Zion National Park, UT",
     "waypoints": [
@@ -43,6 +45,7 @@
   {
     "id": 192,
     "title": "San Francisco to Los Angeles (Pacific Coast Highway)",
+    "subtitle": "450 miles by road",
     "origin": "San Francisco, CA",
     "destination": "Los Angeles, CA",
     "waypoints": [
@@ -64,6 +67,7 @@
   {
     "id": 193,
     "title": "Boston to Bar Harbor (New England Fall Foliage)",
+    "subtitle": "280 miles by road",
     "origin": "Boston, MA",
     "destination": "Bar Harbor, ME",
     "waypoints": [
@@ -84,6 +88,7 @@
   {
     "id": 194,
     "title": "Asheville to Cherokee (Blue Ridge Parkway)",
+    "subtitle": "165 miles by road",
     "origin": "Asheville, NC",
     "destination": "Cherokee, NC",
     "waypoints": [
@@ -104,6 +109,7 @@
   {
     "id": 195,
     "title": "Miami to Key West (Overseas Highway)",
+    "subtitle": "160 miles by road",
     "origin": "Miami, FL",
     "destination": "Key West, FL",
     "waypoints": [
@@ -124,6 +130,7 @@
   {
     "id": 196,
     "title": "Durango to Telluride (San Juan Skyway)",
+    "subtitle": "230 miles by road",
     "origin": "Durango, CO",
     "destination": "Telluride, CO",
     "waypoints": [
@@ -144,6 +151,7 @@
   {
     "id": 197,
     "title": "Moab to Arches and Canyonlands (Utah Mighty 5 start)",
+    "subtitle": "95 miles by road",
     "origin": "Moab, UT",
     "destination": "Monticello, UT",
     "waypoints": [
@@ -164,6 +172,7 @@
   {
     "id": 198,
     "title": "Seattle to Mount Rainier and Olympic",
+    "subtitle": "210 miles by road",
     "origin": "Seattle, WA",
     "destination": "Port Angeles, WA",
     "waypoints": [
@@ -184,6 +193,7 @@
   {
     "id": 199,
     "title": "New Orleans to Memphis (Great River Road)",
+    "subtitle": "400 miles by road",
     "origin": "New Orleans, LA",
     "destination": "Memphis, TN",
     "waypoints": [
@@ -204,6 +214,7 @@
   {
     "id": 200,
     "title": "Fredericksburg to Austin (Texas Hill Country Bluebonnets)",
+    "subtitle": "90 miles by road",
     "origin": "Fredericksburg, TX",
     "destination": "Austin, TX",
     "waypoints": [
@@ -224,6 +235,7 @@
   {
     "id": 201,
     "title": "West Glacier to St. Mary (Going-to-the-Sun Road)",
+    "subtitle": "50 miles by road",
     "origin": "West Glacier, MT",
     "destination": "St. Mary, MT",
     "waypoints": [
@@ -244,6 +256,7 @@
   {
     "id": 202,
     "title": "Jackson to Yellowstone (Grand Teton Loop)",
+    "subtitle": "120 miles by road",
     "origin": "Jackson, WY",
     "destination": "West Yellowstone, MT",
     "waypoints": [
@@ -264,6 +277,7 @@
   {
     "id": 203,
     "title": "Chicago to Mackinac Island (Lake Michigan Shore)",
+    "subtitle": "400 miles by road",
     "origin": "Chicago, IL",
     "destination": "Mackinaw City, MI",
     "waypoints": [
@@ -284,6 +298,7 @@
   {
     "id": 204,
     "title": "Phoenix to Grand Canyon (Sedona Red Rocks)",
+    "subtitle": "230 miles by road",
     "origin": "Phoenix, AZ",
     "destination": "Grand Canyon Village, AZ",
     "waypoints": [
@@ -304,6 +319,7 @@
   {
     "id": 205,
     "title": "Denver to Aspen (Rocky Mountain Peaks)",
+    "subtitle": "160 miles by road",
     "origin": "Denver, CO",
     "destination": "Aspen, CO",
     "waypoints": [
@@ -324,6 +340,7 @@
   {
     "id": 206,
     "title": "Nashville to Great Smoky Mountains",
+    "subtitle": "220 miles by road",
     "origin": "Nashville, TN",
     "destination": "Gatlinburg, TN",
     "waypoints": [
@@ -344,6 +361,7 @@
   {
     "id": 207,
     "title": "Portland to Crater Lake (Oregon Cascades)",
+    "subtitle": "250 miles by road",
     "origin": "Portland, OR",
     "destination": "Crater Lake National Park, OR",
     "waypoints": [
@@ -364,6 +382,7 @@
   {
     "id": 208,
     "title": "Salt Lake City to Bryce Canyon (Utah Scenic Byway 12)",
+    "subtitle": "270 miles by road",
     "origin": "Salt Lake City, UT",
     "destination": "Bryce Canyon National Park, UT",
     "waypoints": [
@@ -384,6 +403,7 @@
   {
     "id": 209,
     "title": "Taos to Red River (Enchanted Circle, New Mexico)",
+    "subtitle": "85 miles by road",
     "origin": "Taos, NM",
     "destination": "Angel Fire, NM",
     "waypoints": [
@@ -404,6 +424,7 @@
   {
     "id": 210,
     "title": "Charleston to Savannah (Lowcountry Coast)",
+    "subtitle": "140 miles by road",
     "origin": "Charleston, SC",
     "destination": "Savannah, GA",
     "waypoints": [
@@ -424,6 +445,7 @@
   {
     "id": 211,
     "title": "Los Angeles to Grand Canyon (Route 66 Desert Leg)",
+    "subtitle": "380 miles by road",
     "origin": "Los Angeles, CA",
     "destination": "Williams, AZ",
     "waypoints": [
@@ -445,6 +467,7 @@
   {
     "id": 212,
     "title": "Minneapolis to Duluth (Lake Superior North Shore)",
+    "subtitle": "260 miles by road",
     "origin": "Minneapolis, MN",
     "destination": "Grand Marais, MN",
     "waypoints": [
@@ -465,6 +488,7 @@
   {
     "id": 213,
     "title": "Philadelphia to Boston (America 250 Freedom Trail)",
+    "subtitle": "350 miles by road",
     "origin": "Philadelphia, PA",
     "destination": "Boston, MA",
     "waypoints": [
@@ -485,6 +509,7 @@
   {
     "id": 214,
     "title": "San Diego to Joshua Tree (SoCal Desert)",
+    "subtitle": "180 miles by road",
     "origin": "San Diego, CA",
     "destination": "Joshua Tree National Park, CA",
     "waypoints": [
@@ -505,6 +530,7 @@
   {
     "id": 215,
     "title": "Rapid City to Devils Tower (Black Hills)",
+    "subtitle": "190 miles by road",
     "origin": "Rapid City, SD",
     "destination": "Devils Tower, WY",
     "waypoints": [
@@ -525,6 +551,7 @@
   {
     "id": 216,
     "title": "Burlington to Stowe (Vermont Green Mountains)",
+    "subtitle": "120 miles by road",
     "origin": "Burlington, VT",
     "destination": "Woodstock, VT",
     "waypoints": [
@@ -545,6 +572,7 @@
   {
     "id": 217,
     "title": "Tucson to Big Bend (Far West Texas)",
+    "subtitle": "480 miles by road",
     "origin": "Tucson, AZ",
     "destination": "Big Bend National Park, TX",
     "waypoints": [
@@ -566,6 +594,7 @@
   {
     "id": 218,
     "title": "Atlanta to Blue Ridge (North Georgia Mountains)",
+    "subtitle": "130 miles by road",
     "origin": "Atlanta, GA",
     "destination": "Clayton, GA",
     "waypoints": [
@@ -586,6 +615,7 @@
   {
     "id": 219,
     "title": "Reno to Yosemite (Lake Tahoe and the Sierra)",
+    "subtitle": "210 miles by road",
     "origin": "Reno, NV",
     "destination": "Yosemite National Park, CA",
     "waypoints": [
@@ -607,6 +637,7 @@
   {
     "id": 220,
     "title": "Kansas City to St. Louis (Missouri Route 66 and BBQ)",
+    "subtitle": "250 miles by road",
     "origin": "Kansas City, MO",
     "destination": "St. Louis, MO",
     "waypoints": [
@@ -627,6 +658,7 @@
   {
     "id": 221,
     "title": "Anchorage to Denali (Alaska Range)",
+    "subtitle": "240 miles by road",
     "origin": "Anchorage, AK",
     "destination": "Denali National Park, AK",
     "waypoints": [
@@ -647,6 +679,7 @@
   {
     "id": 222,
     "title": "Louisville to the Smokies (Kentucky Bourbon Trail)",
+    "subtitle": "200 miles by road",
     "origin": "Louisville, KY",
     "destination": "Cumberland Falls State Park, KY",
     "waypoints": [
@@ -667,6 +700,7 @@
   {
     "id": 223,
     "title": "Orlando to St. Augustine (Florida's First Coast)",
+    "subtitle": "110 miles by road",
     "origin": "Orlando, FL",
     "destination": "St. Augustine, FL",
     "waypoints": [
@@ -687,6 +721,7 @@
   {
     "id": 224,
     "title": "Cheyenne to Rocky Mountain National Park",
+    "subtitle": "170 miles by road",
     "origin": "Cheyenne, WY",
     "destination": "Estes Park, CO",
     "waypoints": [
@@ -707,6 +742,7 @@
   {
     "id": 225,
     "title": "Banff to Jasper on the Icefields Parkway",
+    "subtitle": "144 miles by road",
     "origin": "Banff, AB",
     "destination": "Jasper, AB",
     "waypoints": [
@@ -727,6 +763,7 @@
   {
     "id": 226,
     "title": "Baddeck to Ingonish on the Cabot Trail",
+    "subtitle": "185 miles by road",
     "origin": "Baddeck, NS",
     "destination": "Ingonish, NS",
     "waypoints": [
@@ -747,6 +784,7 @@
   {
     "id": 227,
     "title": "Vancouver to Whistler on the Sea-to-Sky Highway",
+    "subtitle": "75 miles by road",
     "origin": "Vancouver, BC",
     "destination": "Whistler, BC",
     "waypoints": [
@@ -767,6 +805,7 @@
   {
     "id": 228,
     "title": "Sainte-Flavie to Perce Around the Gaspe Peninsula",
+    "subtitle": "235 miles by road",
     "origin": "Sainte-Flavie, QC",
     "destination": "Perce, QC",
     "waypoints": [
@@ -787,6 +826,7 @@
   {
     "id": 229,
     "title": "Deer Lake to St. Anthony on the Viking Trail",
+    "subtitle": "304 miles by road",
     "origin": "Deer Lake, NL",
     "destination": "St. Anthony, NL",
     "waypoints": [
@@ -807,6 +847,7 @@
   {
     "id": 230,
     "title": "Dawson City to Inuvik on the Dempster Highway",
+    "subtitle": "458 miles by road",
     "origin": "Dawson City, YT",
     "destination": "Inuvik, NT",
     "waypoints": [
@@ -827,6 +868,7 @@
   {
     "id": 231,
     "title": "Kelowna to Osoyoos Through Okanagan Wine Country",
+    "subtitle": "80 miles by road",
     "origin": "Kelowna, BC",
     "destination": "Osoyoos, BC",
     "waypoints": [
@@ -847,6 +889,7 @@
   {
     "id": 232,
     "title": "Charlottetown to North Cape Across PEI",
+    "subtitle": "130 miles by road",
     "origin": "Charlottetown, PE",
     "destination": "North Cape, PE",
     "waypoints": [
@@ -867,6 +910,7 @@
   {
     "id": 233,
     "title": "Sault Ste. Marie to Thunder Bay Along Lake Superior",
+    "subtitle": "435 miles by road",
     "origin": "Sault Ste. Marie, ON",
     "destination": "Thunder Bay, ON",
     "waypoints": [
@@ -887,6 +931,7 @@
   {
     "id": 234,
     "title": "Calgary to Waterton Along the Cowboy Trail",
+    "subtitle": "190 miles by road",
     "origin": "Calgary, AB",
     "destination": "Waterton, AB",
     "waypoints": [
@@ -907,6 +952,7 @@
   {
     "id": 235,
     "title": "Whitehorse to Skagway on the South Klondike Highway",
+    "subtitle": "110 miles by road",
     "origin": "Whitehorse, YT",
     "destination": "Skagway, AK",
     "waypoints": [
@@ -927,6 +973,7 @@
   {
     "id": 236,
     "title": "Moncton to Halifax Around the Bay of Fundy",
+    "subtitle": "170 miles by road",
     "origin": "Moncton, NB",
     "destination": "Halifax, NS",
     "waypoints": [
@@ -947,6 +994,7 @@
   {
     "id": 237,
     "title": "Inverness to Durness (North Coast 500 North Leg)",
+    "subtitle": "130 miles by road",
     "origin": "Inverness, Scotland",
     "destination": "Durness, Scotland",
     "waypoints": [
@@ -967,6 +1015,7 @@
   {
     "id": 238,
     "title": "Applecross to Torridon (Bealach na Ba Pass)",
+    "subtitle": "42 miles by road",
     "origin": "Applecross, Scotland",
     "destination": "Torridon, Scotland",
     "waypoints": [
@@ -987,6 +1036,7 @@
   {
     "id": 239,
     "title": "Glasgow to Fort William via Glencoe",
+    "subtitle": "104 miles by road",
     "origin": "Glasgow, Scotland",
     "destination": "Fort William, Scotland",
     "waypoints": [
@@ -1007,6 +1057,7 @@
   {
     "id": 240,
     "title": "Portree to Neist Point (Isle of Skye Loop)",
+    "subtitle": "58 miles by road",
     "origin": "Portree, Scotland",
     "destination": "Neist Point, Scotland",
     "waypoints": [
@@ -1027,6 +1078,7 @@
   {
     "id": 241,
     "title": "Aviemore to Braemar (Cairngorms Crossing)",
+    "subtitle": "51 miles by road",
     "origin": "Aviemore, Scotland",
     "destination": "Braemar, Scotland",
     "waypoints": [
@@ -1047,6 +1099,7 @@
   {
     "id": 242,
     "title": "Edinburgh to St Andrews (Fife Coast)",
+    "subtitle": "55 miles by road",
     "origin": "Edinburgh, Scotland",
     "destination": "St Andrews, Scotland",
     "waypoints": [
@@ -1067,6 +1120,7 @@
   {
     "id": 243,
     "title": "Kendal to Keswick (Lake District Passes)",
+    "subtitle": "40 miles by road",
     "origin": "Kendal, England",
     "destination": "Keswick, England",
     "waypoints": [
@@ -1087,6 +1141,7 @@
   {
     "id": 244,
     "title": "Chipping Campden to Bourton-on-the-Water (Cotswolds)",
+    "subtitle": "22 miles by road",
     "origin": "Chipping Campden, England",
     "destination": "Bourton-on-the-Water, England",
     "waypoints": [
@@ -1107,6 +1162,7 @@
   {
     "id": 245,
     "title": "Swanage to Lyme Regis (Jurassic Coast)",
+    "subtitle": "40 miles by road",
     "origin": "Swanage, England",
     "destination": "Lyme Regis, England",
     "waypoints": [
@@ -1127,6 +1183,7 @@
   {
     "id": 246,
     "title": "Barnstaple to Tintagel (Atlantic Highway)",
+    "subtitle": "70 miles by road",
     "origin": "Barnstaple, England",
     "destination": "Tintagel, England",
     "waypoints": [
@@ -1147,6 +1204,7 @@
   {
     "id": 247,
     "title": "Bakewell to Castleton (Peak District)",
+    "subtitle": "20 miles by road",
     "origin": "Bakewell, England",
     "destination": "Castleton, England",
     "waypoints": [
@@ -1167,6 +1225,7 @@
   {
     "id": 248,
     "title": "Skipton to Hawes (Yorkshire Dales)",
+    "subtitle": "35 miles by road",
     "origin": "Skipton, England",
     "destination": "Hawes, England",
     "waypoints": [
@@ -1187,6 +1246,7 @@
   {
     "id": 249,
     "title": "Alnwick to Lindisfarne (Northumberland Coast)",
+    "subtitle": "30 miles by road",
     "origin": "Alnwick, England",
     "destination": "Lindisfarne, England",
     "waypoints": [
@@ -1207,6 +1267,7 @@
   {
     "id": 250,
     "title": "Betws-y-Coed to Llanberis (Eryri / Snowdonia)",
+    "subtitle": "22 miles by road",
     "origin": "Betws-y-Coed, Wales",
     "destination": "Llanberis, Wales",
     "waypoints": [
@@ -1227,6 +1288,7 @@
   {
     "id": 251,
     "title": "Cardiff to Tenby (Pembrokeshire Coast)",
+    "subtitle": "100 miles by road",
     "origin": "Cardiff, Wales",
     "destination": "Tenby, Wales",
     "waypoints": [
@@ -1247,6 +1309,7 @@
   {
     "id": 252,
     "title": "Brecon to Abergavenny (Bannau Brycheiniog)",
+    "subtitle": "30 miles by road",
     "origin": "Brecon, Wales",
     "destination": "Abergavenny, Wales",
     "waypoints": [
@@ -1267,6 +1330,7 @@
   {
     "id": 253,
     "title": "Llandudno to Portmeirion (North Wales Coast)",
+    "subtitle": "40 miles by road",
     "origin": "Llandudno, Wales",
     "destination": "Portmeirion, Wales",
     "waypoints": [
@@ -1287,6 +1351,7 @@
   {
     "id": 254,
     "title": "Inverness to Loch Ness and Eilean Donan",
+    "subtitle": "78 miles by road",
     "origin": "Inverness, Scotland",
     "destination": "Eilean Donan Castle, Scotland",
     "waypoints": [
@@ -1307,6 +1372,7 @@
   {
     "id": 255,
     "title": "Killarney to Killarney (Ring of Kerry Loop)",
+    "subtitle": "111 miles by road",
     "origin": "Killarney, Ireland",
     "destination": "Killarney, Ireland",
     "waypoints": [
@@ -1328,6 +1394,7 @@
   {
     "id": 256,
     "title": "Dingle to Dingle (Slea Head Drive)",
+    "subtitle": "30 miles by road",
     "origin": "Dingle, Ireland",
     "destination": "Dingle, Ireland",
     "waypoints": [
@@ -1348,6 +1415,7 @@
   {
     "id": 257,
     "title": "Belfast to Derry (Causeway Coastal Route)",
+    "subtitle": "115 miles by road",
     "origin": "Belfast, United Kingdom",
     "destination": "Derry, United Kingdom",
     "waypoints": [
@@ -1369,6 +1437,7 @@
   {
     "id": 258,
     "title": "Galway to Clifden (Connemara)",
+    "subtitle": "50 miles by road",
     "origin": "Galway, Ireland",
     "destination": "Clifden, Ireland",
     "waypoints": [
@@ -1389,6 +1458,7 @@
   {
     "id": 259,
     "title": "Doolin to Kinvara (Burren & Cliffs of Moher)",
+    "subtitle": "38 miles by road",
     "origin": "Doolin, Ireland",
     "destination": "Kinvara, Ireland",
     "waypoints": [
@@ -1409,6 +1479,7 @@
   {
     "id": 260,
     "title": "Kenmare to Glengarriff (Ring of Beara)",
+    "subtitle": "85 miles by road",
     "origin": "Kenmare, Ireland",
     "destination": "Glengarriff, Ireland",
     "waypoints": [
@@ -1429,6 +1500,7 @@
   {
     "id": 261,
     "title": "Sligo to Donegal Town (Wild Atlantic North)",
+    "subtitle": "45 miles by road",
     "origin": "Sligo, Ireland",
     "destination": "Donegal Town, Ireland",
     "waypoints": [
@@ -1449,6 +1521,7 @@
   {
     "id": 262,
     "title": "Cork to Kinsale (Rebel Coast to the Head of Ireland)",
+    "subtitle": "55 miles by road",
     "origin": "Cork, Ireland",
     "destination": "Kinsale, Ireland",
     "waypoints": [
@@ -1469,6 +1542,7 @@
   {
     "id": 263,
     "title": "Melbourne to Port Campbell via the Great Ocean Road",
+    "subtitle": "150 miles by road",
     "origin": "Melbourne, VIC",
     "destination": "Port Campbell, VIC",
     "waypoints": [
@@ -1489,6 +1563,7 @@
   {
     "id": 264,
     "title": "Sydney to Wollongong on the Grand Pacific Drive",
+    "subtitle": "56 miles by road",
     "origin": "Sydney, NSW",
     "destination": "Wollongong, NSW",
     "waypoints": [
@@ -1509,6 +1584,7 @@
   {
     "id": 265,
     "title": "Cairns to Cape Tribulation on the Great Barrier Reef Drive",
+    "subtitle": "87 miles by road",
     "origin": "Cairns, QLD",
     "destination": "Cape Tribulation, QLD",
     "waypoints": [
@@ -1529,6 +1605,7 @@
   {
     "id": 266,
     "title": "Alice Springs to Uluru on the Red Centre Way",
+    "subtitle": "458 miles by road",
     "origin": "Alice Springs, NT",
     "destination": "Uluru, NT",
     "waypoints": [
@@ -1549,6 +1626,7 @@
   {
     "id": 267,
     "title": "Derby to Kununurra on the Gibb River Road",
+    "subtitle": "410 miles by road",
     "origin": "Derby, WA",
     "destination": "Kununurra, WA",
     "waypoints": [
@@ -1569,6 +1647,7 @@
   {
     "id": 268,
     "title": "Hobart to Bay of Fires on Tasmania's Great Eastern Drive",
+    "subtitle": "195 miles by road",
     "origin": "Hobart, TAS",
     "destination": "Bay of Fires, TAS",
     "waypoints": [
@@ -1589,6 +1668,7 @@
   {
     "id": 269,
     "title": "Adelaide to Head of Bight on the Eyre Peninsula whale run",
+    "subtitle": "490 miles by road",
     "origin": "Adelaide, SA",
     "destination": "Head of Bight, SA",
     "waypoints": [
@@ -1609,6 +1689,7 @@
   {
     "id": 270,
     "title": "Sydney to Byron Bay on the Legendary Pacific Coast",
+    "subtitle": "620 miles by road",
     "origin": "Sydney, NSW",
     "destination": "Byron Bay, NSW",
     "waypoints": [
@@ -1629,6 +1710,7 @@
   {
     "id": 271,
     "title": "Perth to Esperance on the South West coast",
+    "subtitle": "450 miles by road",
     "origin": "Perth, WA",
     "destination": "Esperance, WA",
     "waypoints": [
@@ -1649,6 +1731,7 @@
   {
     "id": 272,
     "title": "Brisbane to Noosa on the Sunshine Coast",
+    "subtitle": "87 miles by road",
     "origin": "Brisbane, QLD",
     "destination": "Noosa, QLD",
     "waypoints": [
@@ -1669,6 +1752,7 @@
   {
     "id": 273,
     "title": "Darwin to Katherine on the Nature's Way loop",
+    "subtitle": "280 miles by road",
     "origin": "Darwin, NT",
     "destination": "Katherine, NT",
     "waypoints": [
@@ -1689,6 +1773,7 @@
   {
     "id": 274,
     "title": "Adelaide to Kangaroo Island via the Fleurieu Peninsula",
+    "subtitle": "80 miles by road",
     "origin": "Adelaide, SA",
     "destination": "Kingscote, SA",
     "waypoints": [
@@ -1709,6 +1794,7 @@
   {
     "id": 275,
     "title": "Cairns to Airlie Beach on the Whitsundays coast",
+    "subtitle": "390 miles by road",
     "origin": "Cairns, QLD",
     "destination": "Airlie Beach, QLD",
     "waypoints": [
@@ -1729,6 +1815,7 @@
   {
     "id": 276,
     "title": "Melbourne to Sydney on the Sapphire Coast alpine way",
+    "subtitle": "640 miles by road",
     "origin": "Melbourne, VIC",
     "destination": "Sydney, NSW",
     "waypoints": [
@@ -1749,6 +1836,7 @@
   {
     "id": 277,
     "title": "Broome to Exmouth on the Coral Coast",
+    "subtitle": "780 miles by road",
     "origin": "Broome, WA",
     "destination": "Exmouth, WA",
     "waypoints": [
@@ -1769,6 +1857,7 @@
   {
     "id": 278,
     "title": "Queenstown to Milford Sound: The Fiordland Run",
+    "subtitle": "179 miles by road",
     "origin": "Queenstown, New Zealand",
     "destination": "Milford Sound, New Zealand",
     "waypoints": [
@@ -1790,6 +1879,7 @@
   {
     "id": 279,
     "title": "Queenstown to Wanaka over the Crown Range",
+    "subtitle": "43 miles by road",
     "origin": "Queenstown, New Zealand",
     "destination": "Wanaka, New Zealand",
     "waypoints": [
@@ -1810,6 +1900,7 @@
   {
     "id": 280,
     "title": "Christchurch to Aoraki Mount Cook",
+    "subtitle": "205 miles by road",
     "origin": "Christchurch, New Zealand",
     "destination": "Aoraki Mount Cook Village, New Zealand",
     "waypoints": [
@@ -1830,6 +1921,7 @@
   {
     "id": 281,
     "title": "Christchurch to Greymouth: Arthur's Pass Crossing",
+    "subtitle": "152 miles by road",
     "origin": "Christchurch, New Zealand",
     "destination": "Greymouth, New Zealand",
     "waypoints": [
@@ -1850,6 +1942,7 @@
   {
     "id": 282,
     "title": "Nelson to Franz Josef: The Wild West Coast",
+    "subtitle": "264 miles by road",
     "origin": "Nelson, New Zealand",
     "destination": "Franz Josef Glacier, New Zealand",
     "waypoints": [
@@ -1870,6 +1963,7 @@
   {
     "id": 283,
     "title": "Dunedin to Invercargill: The Catlins Coast",
+    "subtitle": "143 miles by road",
     "origin": "Dunedin, New Zealand",
     "destination": "Invercargill, New Zealand",
     "waypoints": [
@@ -1890,6 +1984,7 @@
   {
     "id": 284,
     "title": "Kaikoura to Christchurch: Whales and Vineyards",
+    "subtitle": "112 miles by road",
     "origin": "Kaikoura, New Zealand",
     "destination": "Christchurch, New Zealand",
     "waypoints": [
@@ -1910,6 +2005,7 @@
   {
     "id": 285,
     "title": "Auckland to Cathedral Cove: Coromandel Peninsula",
+    "subtitle": "120 miles by road",
     "origin": "Auckland, New Zealand",
     "destination": "Hahei, New Zealand",
     "waypoints": [
@@ -1930,6 +2026,7 @@
   {
     "id": 286,
     "title": "Auckland to Paihia: Bay of Islands",
+    "subtitle": "145 miles by road",
     "origin": "Auckland, New Zealand",
     "destination": "Paihia, New Zealand",
     "waypoints": [
@@ -1950,6 +2047,7 @@
   {
     "id": 287,
     "title": "Auckland to Taupo: Volcanic Heartland",
+    "subtitle": "173 miles by road",
     "origin": "Auckland, New Zealand",
     "destination": "Taupo, New Zealand",
     "waypoints": [
@@ -1970,6 +2068,7 @@
   {
     "id": 288,
     "title": "Taupo to Napier: Thermal Explorer to Art Deco",
+    "subtitle": "89 miles by road",
     "origin": "Taupo, New Zealand",
     "destination": "Napier, New Zealand",
     "waypoints": [
@@ -1990,6 +2089,7 @@
   {
     "id": 289,
     "title": "Wellington to Napier: Wairarapa Wine Trail",
+    "subtitle": "200 miles by road",
     "origin": "Wellington, New Zealand",
     "destination": "Napier, New Zealand",
     "waypoints": [

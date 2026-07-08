@@ -11,6 +11,7 @@ export interface Profile {
 export interface Route {
   id: number;
   title: string;
+  subtitle: string | null;
   origin: string;
   destination: string;
   waypoints: string[];
@@ -36,6 +37,7 @@ export interface Route {
 export interface SourceRoute {
   id: number;
   title: string;
+  subtitle?: string;
   origin: string;
   destination: string;
   waypoints?: string[];

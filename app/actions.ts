@@ -302,6 +302,7 @@ export async function adminImportRoutes(json: string) {
   const rows = parsed.map((r) => ({
     id: r.id,
     title: r.title,
+    subtitle: r.subtitle ?? null,
     origin: r.origin,
     destination: r.destination,
     waypoints: r.waypoints ?? [],

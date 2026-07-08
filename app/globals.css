@@ -53,8 +53,12 @@ h2 {
   letter-spacing: 0;
 }
 
-a {
-  color: inherit;
+/* Links inherit surrounding text color instead of UA blue. Kept in the `base`
+   layer so Tailwind color utilities (e.g. text-white on button links) win. */
+@layer base {
+  a {
+    color: inherit;
+  }
 }
 
 ::selection {

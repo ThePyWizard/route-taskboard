@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { NavBar } from "@/components/NavBar";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ClaimButton } from "@/components/ClaimButton";
 import { UploadWidget } from "@/components/UploadWidget";
 import { CopyButton } from "@/components/CopyButton";
+import { JobCommand } from "@/components/JobCommand";
 import { ExportSpec } from "@/components/ExportSpec";
 import { MapsButton } from "@/components/MapsButton";
 import { requireProfile } from "@/lib/session";
@@ -30,6 +32,12 @@ export default async function RouteDetail({
 
   if (!data) notFound();
   const route = data as Route;
+
+  // Absolute base URL for the public job JSON the motwr CLI fetches.
+  const h = await headers();
+  const proto = h.get("x-forwarded-proto") ?? "http";
+  const host = h.get("host") ?? "localhost:3000";
+  const jobUrl = `${proto}://${host}/jobs/${route.id}.json`;
 
   const mine = route.assigned_to === profile.id;
   const isAvailable = route.status === "available";
@@ -111,6 +119,23 @@ export default async function RouteDetail({
           </p>
         )}
 
+        {/* Claim (Take this route) — sits just above the voiceover script */}
+        {isAvailable && (
+          <section className="mt-7">
+            <div className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5">
+              <div>
+                <h3 className="font-display text-lg font-semibold text-[var(--ink)]">
+                  Take this route
+                </h3>
+                <p className="text-sm text-[var(--muted)]">
+                  It&apos;s yours until you upload or release it.
+                </p>
+              </div>
+              <ClaimButton routeId={route.id} mode="claim" />
+            </div>
+          </section>
+        )}
+
         {/* Voiceover script */}
         {route.script && (
           <section className="mt-7">
@@ -124,35 +149,24 @@ export default async function RouteDetail({
           </section>
         )}
 
-        {/* Action area */}
-        <section className="mt-8 space-y-4">
-          {isAvailable && (
-            <div className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5">
-              <div>
-                <h3 className="font-display text-lg font-semibold text-[var(--ink)]">
-                  Take this route
-                </h3>
-                <p className="text-sm text-[var(--muted)]">
-                  It&apos;s yours until you upload or release it.
-                </p>
-              </div>
-              <ClaimButton routeId={route.id} mode="claim" />
-            </div>
-          )}
-
-          {canUpload && (
-            <>
-              <ExportSpec />
-              <UploadWidget
-                routeId={route.id}
-                hasExisting={route.status === "uploaded"}
-              />
-              <div className="flex justify-end">
-                <ClaimButton routeId={route.id} mode="release" />
-              </div>
-            </>
-          )}
+        {/* Finished-video render command (motwr CLI) — below the claim option */}
+        <section className="mt-7">
+          <JobCommand jobUrl={jobUrl} />
         </section>
+
+        {/* Upload area */}
+        {canUpload && (
+          <section className="mt-8 space-y-4">
+            <ExportSpec />
+            <UploadWidget
+              routeId={route.id}
+              hasExisting={route.status === "uploaded"}
+            />
+            <div className="flex justify-end">
+              <ClaimButton routeId={route.id} mode="release" />
+            </div>
+          </section>
+        )}
 
         <div className="mt-10 border-t border-[var(--border)] pt-6">
           <Link
