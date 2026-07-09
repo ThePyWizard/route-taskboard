@@ -5,12 +5,18 @@ import { useState } from "react";
 // Shows the ready-to-paste `motwr` CLI command that renders the finished,
 // branded short from a TravelAnimator base video + this route's job JSON.
 // The job JSON is served publicly at `jobUrl` (see app/jobs/[id]/route.ts).
-export function JobCommand({ jobUrl }: { jobUrl: string }) {
+export function JobCommand({
+  jobUrl,
+  routeId,
+}: {
+  jobUrl: string;
+  routeId: number;
+}) {
   const [os, setOs] = useState<"unix" | "win">("unix");
   const [copied, setCopied] = useState(false);
 
   const bin = os === "win" ? ".\\motwr.exe" : "./motwr";
-  const command = `${bin} -job "${jobUrl}" -video route.mp4 -o finished.mp4`;
+  const command = `${bin} -job "${jobUrl}" -video route.mp4 -o route-${routeId}-video.mp4`;
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5">

@@ -151,7 +151,7 @@ export default async function RouteDetail({
 
         {/* Finished-video render command (motwr CLI) — below the claim option */}
         <section className="mt-7">
-          <JobCommand jobUrl={jobUrl} />
+          <JobCommand jobUrl={jobUrl} routeId={route.id} />
         </section>
 
         {/* Upload area */}
