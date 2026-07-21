@@ -21,6 +21,7 @@ export interface Route {
   script_duration_seconds: number | null;
   total_distance: number | null;
   caption_style: number | null;
+  description: string | null;
   status: RouteStatus;
   assigned_to: string | null;
   assigned_to_name: string | null;
@@ -31,6 +32,16 @@ export interface Route {
   notes: string | null;
   created_at: string;
   updated_at: string;
+}
+
+// A row in the `contents` posting queue (migrated from the standalone Logbook).
+export interface Content {
+  id: string;
+  created_at: string;
+  video_url: string;
+  caption: string;
+  posted: boolean;
+  post_id: number | null;
 }
 
 // Shape of an entry in mapsoftheworldroutes/routes.json (camelCase source of truth).
@@ -47,4 +58,5 @@ export interface SourceRoute {
   scriptDurationSeconds?: number;
   totalDistance?: number;
   captionStyle?: number;
+  description?: string;
 }

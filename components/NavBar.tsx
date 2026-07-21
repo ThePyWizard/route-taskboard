@@ -36,6 +36,9 @@ export function NavBar({
           <Link href="/leaderboard" className={pill}>
             Leaderboard
           </Link>
+          <Link href="/logbook" className={`hidden ${pill} sm:inline-block`}>
+            Logbook
+          </Link>
           {isAdmin && (
             <Link href="/admin" className={`hidden ${pill} sm:inline-block`}>
               Admin

@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
@@ -255,16 +256,75 @@ export async function getPreviewUrl(path: string) {
   return { url };
 }
 
+// Approve an uploaded route: queue it in the posting logbook, then mark it done.
+// The contents insert happens BEFORE the status flip and is idempotent (keyed on
+// post_id), so a failure leaves the route in 'uploaded' for a safe retry and a
+// re-approval never creates a duplicate logbook entry.
 export async function adminMarkDone(routeId: number) {
   await requireAdmin();
   const admin = createAdminClient();
+
+  const { data: route, error: rErr } = await admin
+    .from("routes")
+    .select("id, video_path, description")
+    .eq("id", routeId)
+    .maybeSingle();
+  if (rErr) return { error: rErr.message };
+  if (!route) return { error: "Route not found." };
+
+  const { data: existing, error: exErr } = await admin
+    .from("contents")
+    .select("id")
+    .eq("post_id", routeId)
+    .limit(1);
+  if (exErr) return { error: exErr.message };
+
+  if (!existing || existing.length === 0) {
+    // video_url stores the R2 object key; the logbook presigns a download on
+    // click (see getContentDownloadUrl). caption is the route's TikTok caption.
+    // id/created_at are supplied explicitly so this works even if the contents
+    // table (e.g. created via CSV import) lacks the gen_random_uuid()/now()
+    // column defaults that schema.sql declares.
+    const { error: insErr } = await admin.from("contents").insert({
+      id: randomUUID(),
+      created_at: new Date().toISOString(),
+      video_url: route.video_path ?? "",
+      caption: route.description ?? "",
+      posted: false,
+      post_id: route.id,
+    });
+    if (insErr) return { error: `Could not add to logbook: ${insErr.message}` };
+  }
+
   const { error } = await admin
     .from("routes")
     .update({ status: "done", updated_at: new Date().toISOString() })
     .eq("id", routeId);
   if (error) return { error: error.message };
+
   revalidatePath("/admin");
+  revalidatePath("/logbook");
   return { ok: true };
+}
+
+// Presigned R2 download for the logbook, open to any signed-in profile (the
+// posting team, not just admins). Mirrors getDownloadUrl without the admin gate.
+export async function getContentDownloadUrl(path: string) {
+  await requireProfile();
+  if (!path) return { error: "No video is attached to this entry." };
+  const routeId = path.split("/")[0];
+  const ext = path.includes(".") ? path.split(".").pop()!.toLowerCase() : "mp4";
+  const filename = `route-${routeId}-video.${ext}`;
+  const url = await getSignedUrl(
+    r2(),
+    new GetObjectCommand({
+      Bucket: R2_BUCKET,
+      Key: path,
+      ResponseContentDisposition: `attachment; filename="${filename}"`,
+    }),
+    { expiresIn: 60 * 60 }
+  );
+  return { url };
 }
 
 export async function adminReleaseRoute(routeId: number) {
@@ -286,6 +346,26 @@ export async function adminReleaseRoute(routeId: number) {
     .eq("id", routeId);
   if (error) return { error: error.message };
   revalidatePath("/admin");
+  return { ok: true };
+}
+
+// ---------- contents / posting queue ----------
+
+// Flip a contents row's `posted` flag. Available to any signed-in profile (the
+// posting team, not only admins). Writes with the service role like everything
+// else; identity is the profile cookie.
+export async function togglePosted(id: string, posted: boolean) {
+  await requireProfile();
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("contents")
+    .update({ posted })
+    .eq("id", id)
+    .select();
+  if (error) return { error: error.message };
+  if (!data || data.length === 0)
+    return { error: "That entry no longer exists." };
+  revalidatePath("/logbook");
   return { ok: true };
 }
 
@@ -312,6 +392,7 @@ export async function adminImportRoutes(json: string) {
     script_duration_seconds: r.scriptDurationSeconds ?? null,
     total_distance: r.totalDistance ?? null,
     caption_style: r.captionStyle ?? null,
+    description: r.description ?? null,
   }));
 
   const admin = createAdminClient();

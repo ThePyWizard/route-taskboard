@@ -49,6 +49,8 @@ create table if not exists public.routes (
 
 -- Additive migrations for tables that already exist (idempotent).
 alter table public.routes add column if not exists subtitle text;
+-- TikTok caption for this route (used as contents.caption when approved).
+alter table public.routes add column if not exists description text;
 
 create index if not exists routes_status_idx on public.routes (status);
 create index if not exists routes_assigned_idx on public.routes (assigned_to);
@@ -58,6 +60,27 @@ alter table public.profiles enable row level security;
 alter table public.routes   enable row level security;
 -- (No policies on purpose. The anon key cannot read/write; the service-role
 --  key used by the server actions bypasses RLS.)
+
+-- ---------- contents (posting queue / "logbook") ----------
+-- Approved videos ready to be posted to the TikTok account. Mirrors the schema
+-- from the standalone "Logbook" app (see previous_prject.md) so its rows migrate
+-- in unchanged. Read/written server-side with the service role, same as routes.
+create table if not exists public.contents (
+  id         uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  video_url  text default ''::text,
+  caption    text default ''::text,
+  posted     boolean default false,
+  post_id    integer
+);
+
+create index if not exists contents_posted_idx  on public.contents (posted);
+create index if not exists contents_post_id_idx on public.contents (post_id);
+
+alter table public.contents enable row level security;
+-- (No policies on purpose — service-role only, like profiles/routes. The old
+--  Logbook app needed anon SELECT/UPDATE policies because it queried from the
+--  browser; this app never does, so leave contents policy-free.)
 
 -- ---------- file storage ----------
 -- Uploaded exports live in Cloudflare R2, NOT Supabase Storage (R2 has a far

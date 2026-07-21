@@ -41,6 +41,7 @@ const rows = source.map((r) => ({
   script_duration_seconds: r.scriptDurationSeconds ?? null,
   total_distance: r.totalDistance ?? null,
   caption_style: r.captionStyle ?? null,
+  description: r.description ?? null,
   // status / assignment columns are intentionally omitted so upsert does not
   // clobber routes that employees have already claimed or uploaded.
 }));
