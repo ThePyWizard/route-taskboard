@@ -33,10 +33,10 @@ export function NavBar({
           <Link href="/showcase" className={`hidden ${pill} sm:inline-block`}>
             Showcase
           </Link>
-          <Link href="/leaderboard" className={pill}>
+          <Link href="/leaderboard" className={`hidden ${pill} sm:inline-block`}>
             Leaderboard
           </Link>
-          <Link href="/logbook" className={`hidden ${pill} sm:inline-block`}>
+          <Link href="/logbook" className={pill}>
             Logbook
           </Link>
           {isAdmin && (
