@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { Content } from "@/lib/types";
-import { togglePosted, getContentDownloadUrl, getPreviewUrl } from "@/app/actions";
+import { togglePosted } from "@/app/actions";
 import { isDriveUrl } from "@/lib/drive";
 
 const btn =
@@ -12,7 +12,7 @@ const btn =
 export function PostCard({ content }: { content: Content }) {
   const [copied, setCopied] = useState(false);
   const [armed, setArmed] = useState(false);
-  const [dlState, setDlState] = useState<"idle" | "busy" | "done">("idle");
+  const [dlState, setDlState] = useState<"idle" | "done">("idle");
   const [pending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -20,12 +20,20 @@ export function PostCard({ content }: { content: Content }) {
     content.post_id != null ? String(content.post_id).padStart(3, "0") : "—";
   const url = content.video_url;
   // Migrated rows hold an http(s) link (Google Drive); rows queued by this app
-  // hold an R2 object key, which we presign on click.
+  // hold an R2 object key. Both download via a plain <a href> so the navigation
+  // happens synchronously inside the tap — iOS Safari blocks downloads triggered
+  // after an await (e.g. window.open post-presign). R2 keys go through a
+  // same-origin route that presigns and 302-redirects.
   const external = /^https?:\/\//i.test(url);
   const drive = external && isDriveUrl(url);
-  const externalDownloadHref = drive
-    ? `/api/download?url=${encodeURIComponent(url)}&name=entry-${entry}.mp4`
-    : url;
+  const downloadHref = external
+    ? drive
+      ? `/api/download?url=${encodeURIComponent(url)}&name=entry-${entry}.mp4`
+      : url
+    : `/api/content-download?key=${encodeURIComponent(url)}`;
+  const openHref = external
+    ? url
+    : `/api/content-download?key=${encodeURIComponent(url)}&inline=1`;
 
   // Brief visual confirmation that the tap registered (matters on mobile, no hover).
   function flashDownloaded() {
@@ -33,28 +41,11 @@ export function PostCard({ content }: { content: Content }) {
     setTimeout(() => setDlState("idle"), 2000);
   }
 
-  async function downloadR2() {
-    setDlState("busy");
-    const res = await getContentDownloadUrl(url);
-    if ("error" in res) {
-      setDlState("idle");
-      return alert(res.error);
-    }
-    window.open(res.url, "_blank");
-    flashDownloaded();
-  }
-
   const dlClass =
     dlState === "idle"
       ? btn
       : "rounded-lg px-2.5 py-1 text-xs font-medium text-white bg-emerald-600 transition-colors";
-  const dlLabel =
-    dlState === "busy" ? "…" : dlState === "done" ? "Downloaded ✓" : "⬇ Download";
-
-  async function openR2() {
-    const res = await getPreviewUrl(url);
-    window.open(res.url, "_blank");
-  }
+  const dlLabel = dlState === "done" ? "Downloaded ✓" : "⬇ Download";
 
   async function copyCaption() {
     await navigator.clipboard.writeText(content.caption);
@@ -107,37 +98,23 @@ export function PostCard({ content }: { content: Content }) {
           {copied ? "Copied ✓" : "Copy caption"}
         </button>
 
-        {url &&
-          (external ? (
-            <a
-              href={externalDownloadHref}
-              target={drive ? undefined : "_blank"}
-              rel="noreferrer"
-              onClick={flashDownloaded}
-              className={dlClass}
-            >
-              {dlLabel}
-            </a>
-          ) : (
-            <button
-              onClick={downloadR2}
-              disabled={dlState === "busy"}
-              className={dlClass}
-            >
-              {dlLabel}
-            </button>
-          ))}
+        {url && (
+          <a
+            href={downloadHref}
+            target={external && !drive ? "_blank" : undefined}
+            rel="noreferrer"
+            onClick={flashDownloaded}
+            className={dlClass}
+          >
+            {dlLabel}
+          </a>
+        )}
 
-        {url &&
-          (external ? (
-            <a href={url} target="_blank" rel="noreferrer" className={btn}>
-              Open ↗
-            </a>
-          ) : (
-            <button onClick={openR2} className={btn}>
-              Open ↗
-            </button>
-          ))}
+        {url && (
+          <a href={openHref} target="_blank" rel="noreferrer" className={btn}>
+            Open ↗
+          </a>
+        )}
 
         <button
           onClick={toggle}
