@@ -12,6 +12,7 @@ const btn =
 export function PostCard({ content }: { content: Content }) {
   const [copied, setCopied] = useState(false);
   const [armed, setArmed] = useState(false);
+  const [dlState, setDlState] = useState<"idle" | "busy" | "done">("idle");
   const [pending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -26,11 +27,29 @@ export function PostCard({ content }: { content: Content }) {
     ? `/api/download?url=${encodeURIComponent(url)}&name=entry-${entry}.mp4`
     : url;
 
-  async function downloadR2() {
-    const res = await getContentDownloadUrl(url);
-    if ("error" in res) return alert(res.error);
-    window.open(res.url, "_blank");
+  // Brief visual confirmation that the tap registered (matters on mobile, no hover).
+  function flashDownloaded() {
+    setDlState("done");
+    setTimeout(() => setDlState("idle"), 2000);
   }
+
+  async function downloadR2() {
+    setDlState("busy");
+    const res = await getContentDownloadUrl(url);
+    if ("error" in res) {
+      setDlState("idle");
+      return alert(res.error);
+    }
+    window.open(res.url, "_blank");
+    flashDownloaded();
+  }
+
+  const dlClass =
+    dlState === "idle"
+      ? btn
+      : "rounded-lg px-2.5 py-1 text-xs font-medium text-white bg-emerald-600 transition-colors";
+  const dlLabel =
+    dlState === "busy" ? "…" : dlState === "done" ? "Downloaded ✓" : "⬇ Download";
 
   async function openR2() {
     const res = await getPreviewUrl(url);
@@ -94,13 +113,18 @@ export function PostCard({ content }: { content: Content }) {
               href={externalDownloadHref}
               target={drive ? undefined : "_blank"}
               rel="noreferrer"
-              className={btn}
+              onClick={flashDownloaded}
+              className={dlClass}
             >
-              ⬇ Download
+              {dlLabel}
             </a>
           ) : (
-            <button onClick={downloadR2} className={btn}>
-              ⬇ Download
+            <button
+              onClick={downloadR2}
+              disabled={dlState === "busy"}
+              className={dlClass}
+            >
+              {dlLabel}
             </button>
           ))}
 
