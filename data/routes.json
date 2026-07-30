@@ -2206,5 +2206,71 @@
     "totalDistance": 200,
     "captionStyle": 1,
     "description": "$25 in gas. 200 miles. Two of NZ's best wine regions. 🍷\n#martinborough #wairarapa #napier #pinotnoir #hawkesbay #roadtrip #travelchecklist #hiddengems #scenicdrive #USAtravel #fyp"
+  },
+  {
+    "id": 290,
+    "title": "Red River to Taos (Wild Rivers, New Mexico)",
+    "subtitle": "70 miles by road",
+    "origin": "Red River, NM",
+    "destination": "Taos, NM",
+    "waypoints": [
+      "Questa, NM",
+      "Wild Rivers Recreation Area, NM",
+      "Rio Grande Gorge Bridge, NM"
+    ],
+    "script": "Eight dollars in gas gets you the 70 miles from Red River to Taos, and almost nobody drives this side of New Mexico's Enchanted Circle. Start in Red River at 8,750 feet, an old gold mining camp that turned itself into a ski town. Drop down to Questa, then cut west into Wild Rivers, where the Rio Grande and the Red River have sliced an 800-foot canyon straight through ancient lava and meet at the bottom. From La Junta Point you're looking down on two wild and scenic rivers at once. Then head south and drive out over the Rio Grande Gorge Bridge, 565 feet of open air under the road. Finish in Taos at the thousand-year-old adobe pueblo. Late September the canyon cottonwoods go solid gold. Is this better than the full Enchanted Circle loop?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Red+River%2C+NM/Questa%2C+NM/Wild+Rivers+Recreation+Area%2C+NM/Rio+Grande+Gorge+Bridge%2C+NM/Taos%2C+NM",
+    "whyTrending": "This is the western half of the Enchanted Circle, the leg most leaf-peeping itineraries skip in favor of the Angel Fire side. Wild Rivers, inside Rio Grande del Norte National Monument, is where the Rio Grande and Red River meet at the bottom of an 800-foot volcanic canyon, and La Junta Point is one of the most dramatic overlooks in the state. Taos fall color peaks late September through mid-October, with the Rio Grande Gorge cottonwoods adding gold against dark canyon walls. Reuses the hashtag set from route 209 to test hashtag performance against a different visual.",
+    "scriptDurationSeconds": 50,
+    "audioFile": "route-290-audio.wav",
+    "videoFile": "route-290-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 70,
+    "captionStyle": 1,
+    "description": "$8 in gas. 70 miles. Two wild rivers meet 800 ft down. 🍂\n#enchantedcircle #newmexico #taos #redriver #roadtrip"
+  },
+  {
+    "id": 291,
+    "title": "Savannah to Charleston (Lowcountry Back Way)",
+    "subtitle": "175 miles by road",
+    "origin": "Savannah, GA",
+    "destination": "Charleston, SC",
+    "waypoints": [
+      "Bluffton, SC",
+      "Old Sheldon Church Ruins, SC",
+      "Johns Island, SC"
+    ],
+    "script": "Did you know for about 25 dollars in gas you can drive the 175 miles from Savannah back up to Charleston and skip almost everything the tourists stop for? Leave Savannah's oak-shaded squares and cross into South Carolina at Bluffton, a one-street river town where the oyster boats still tie up on the May River. Then pull off at the Old Sheldon Church, a brick shell finished in 1753 and burned twice, once by the British in 1779 and again in 1865, now standing wide open to the sky under live oaks. Cut north through the ACE Basin, 350,000 acres of tidal marsh and old rice fields. Finish on Johns Island under the Angel Oak, 65 feet tall with branches shading 17,000 square feet. By late October the humidity finally breaks. Everybody drives this the other direction. Are they missing all of it?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Savannah%2C+GA/Bluffton%2C+SC/Old+Sheldon+Church+Ruins%2C+SC/Johns+Island%2C+SC/Charleston%2C+SC",
+    "whyTrending": "This is the Charleston-Savannah Lowcountry corridor run in reverse, trading Beaufort and Hilton Head's beaches for the Old Sheldon Church ruins and the Angel Oak, two of the most photographed Spanish-moss subjects in the Southeast. The Angel Oak draws roughly 400,000 visitors a year and admission is free. Late October and November are the Lowcountry's real sweet spot, after the humidity and hurricane peak break but while the marsh is still gold. Reuses route 210's place hashtags so hashtag performance can be compared against a different visual payoff.",
+    "scriptDurationSeconds": 50,
+    "audioFile": "route-291-audio.wav",
+    "videoFile": "route-291-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 175,
+    "captionStyle": 1,
+    "description": "$25 in gas. 175 miles. The Lowcountry drive nobody does backwards. 🌳\n#lowcountry #southcarolina #charleston #savannah #roadtrip"
+  },
+  {
+    "id": 292,
+    "title": "Jackson to Cody (Yellowstone's East Gate)",
+    "subtitle": "210 miles by road",
+    "origin": "Jackson, WY",
+    "destination": "Cody, WY",
+    "waypoints": [
+      "Grand Teton National Park, WY",
+      "Yellowstone Lake, WY",
+      "Grand Canyon of the Yellowstone, WY"
+    ],
+    "script": "For about 25 dollars in gas you can drive 210 miles from Jackson to Cody, straight through both parks and out the one Yellowstone gate that's only open six months a year. Leave Jackson and run north under the Tetons, then cross into Yellowstone along Yellowstone Lake, the largest lake in North America sitting above 7,000 feet. Cut up to the Grand Canyon of the Yellowstone, where the Lower Falls drop 308 feet, nearly twice the height of Niagara, into a gorge that is actually yellow. Then turn east and climb Sylvan Pass at 8,500 feet, shut by avalanche danger from November until May, and drop down the Shoshone canyon into Cody, the town Buffalo Bill built in 1896. Everybody exits Yellowstone through the west gate. This is the exit nobody takes. Would you drive out this way instead?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Jackson%2C+WY/Grand+Teton+National+Park%2C+WY/Yellowstone+Lake%2C+WY/Grand+Canyon+of+the+Yellowstone%2C+WY/Cody%2C+WY",
+    "whyTrending": "This is the Jackson-Yellowstone corridor run out the east side instead of the west, swapping Old Faithful and Grand Prismatic for the Lower Falls and Sylvan Pass. Yellowstone's East Entrance road, including Sylvan Pass, runs May 1 to October 31 in 2026, a hard six-month window that creates real urgency. Cody anchors the far end with the nightly summer rodeo and Buffalo Bill history. Park gate pricing is also a live 2026 talking point: a US vehicle pass is 35 dollars while international visitors now pay a 100 dollar surcharge on top. Reuses route 202's place hashtags so hashtag performance can be compared against a different visual payoff.",
+    "scriptDurationSeconds": 50,
+    "audioFile": "route-292-audio.wav",
+    "videoFile": "route-292-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 210,
+    "captionStyle": 1,
+    "description": "$25 in gas. 210 miles. The Yellowstone exit nobody takes. 🦬\n#yellowstone #grandteton #jacksonhole #wyoming #roadtrip"
   }
 ]
