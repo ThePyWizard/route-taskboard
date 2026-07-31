@@ -2272,5 +2272,71 @@
     "totalDistance": 210,
     "captionStyle": 1,
     "description": "$25 in gas. 210 miles. The Yellowstone exit nobody takes. 🦬\n#yellowstone #grandteton #jacksonhole #wyoming #roadtrip"
+  },
+  {
+    "id": 293,
+    "title": "Los Angeles to San Francisco (Big Sur Northbound)",
+    "subtitle": "460 miles by road",
+    "origin": "Los Angeles, CA",
+    "destination": "San Francisco, CA",
+    "waypoints": [
+      "Piedras Blancas Elephant Seal Rookery, CA",
+      "McWay Falls, CA",
+      "Bixby Creek Bridge, CA"
+    ],
+    "script": "Everybody tells you to drive the Pacific Coast Highway north to south. Here is the argument for doing it backwards. For about 60 dollars in gas you can run the 460 miles from Los Angeles up to San Francisco, and since January 2026 the road is finally open end to end for the first time in almost three years. Drive north and the coast comes at you head on instead of sliding past your shoulder. You stop at Piedras Blancas, where 25,000 elephant seals sprawl on the sand a few feet below the boardwalk. Then McWay Falls, 80 feet of water dropping straight onto a beach nobody can walk on. Then Bixby Creek Bridge, 260 feet above the canyon floor, with the whole Big Sur coast stacked up behind you. September is the month the fog quits. So which direction is right?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Los+Angeles%2C+CA/Piedras+Blancas+Elephant+Seal+Rookery%2C+CA/McWay+Falls%2C+CA/Bixby+Creek+Bridge%2C+CA/San+Francisco%2C+CA",
+    "whyTrending": "This is the Pacific Coast Highway run northbound, trading Monterey and Santa Barbara for the elephant seal rookery, McWay Falls and Bixby Creek Bridge. Caltrans reopened the final 6.8-mile Regent's Slide segment on January 14, 2026, months ahead of the March estimate, restoring uninterrupted Carmel-to-Cambria access for the first time since the road closed in February 2024. September is the clearest month on the Big Sur coast, after the August fog and before winter slide season. The north-versus-south direction debate is a reliable comment-section fight. Reuses route 192's place hashtags so hashtag performance can be compared against a different visual payoff.",
+    "scriptDurationSeconds": 53,
+    "audioFile": "route-293-audio.wav",
+    "videoFile": "route-293-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 460,
+    "captionStyle": 1,
+    "description": "$60 in gas. 460 miles. Everybody drives this the wrong way. 🌊\n#pacificcoasthighway #bigsur #losangeles #sanfrancisco #roadtrip"
+  },
+  {
+    "id": 294,
+    "title": "Duluth to Grand Portage (North Shore's Last 150 Miles)",
+    "subtitle": "150 miles by road",
+    "origin": "Duluth, MN",
+    "destination": "Grand Portage State Park, MN",
+    "waypoints": [
+      "Palisade Head, MN",
+      "Grand Marais, MN",
+      "Grand Portage, MN"
+    ],
+    "script": "People drive Highway 61 up Minnesota's North Shore every fall, pull over at Gooseberry Falls, and turn around 110 miles short of the best waterfall in the state. For about 20 dollars in gas you can drive all 150 miles from Duluth to the Canadian border instead. First stop is Palisade Head, where you drive to the top of a cliff standing more than 300 feet above Lake Superior, cut from lava over a billion years old. Then Grand Marais, a harbor town of 1,300 people with more art galleries than gas stations. Keep going. At the very end of the road, in Grand Portage State Park, the Pigeon River drops 120 feet at High Falls, the tallest waterfall in Minnesota, half a mile from the parking lot on a paved trail. Maples peak the last week of September. Why does everybody stop early?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Duluth%2C+MN/Palisade+Head%2C+MN/Grand+Marais%2C+MN/Grand+Portage%2C+MN/Grand+Portage+State+Park%2C+MN",
+    "whyTrending": "This is the North Shore drive continued past where route 212 stops, swapping Two Harbors and Gooseberry Falls for Palisade Head and High Falls of the Pigeon River, Minnesota's tallest waterfall at 120 feet, right on the Canadian border. North Shore maple color peaks from the third week of September through about October 10, with a second birch and poplar yellow season running into early November, so the window is genuinely short. High Falls is reached by a half-mile paved, wheelchair-accessible trail, which makes it an unusually easy payoff to sell. Reuses route 212's place hashtags so hashtag performance can be compared against a different visual payoff.",
+    "scriptDurationSeconds": 51,
+    "audioFile": "route-294-audio.wav",
+    "videoFile": "route-294-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 150,
+    "captionStyle": 1,
+    "description": "$20 in gas. 150 miles. Minnesota's tallest waterfall is at the very end of the road. 🍁\n#lakesuperior #northshore #duluth #grandmarais #roadtrip"
+  },
+  {
+    "id": 295,
+    "title": "Telluride to Durango (San Juan Skyway West Half)",
+    "subtitle": "125 miles by road",
+    "origin": "Telluride, CO",
+    "destination": "Durango, CO",
+    "waypoints": [
+      "Lizard Head Pass, CO",
+      "Rico, CO",
+      "Mesa Verde National Park, CO"
+    ],
+    "script": "Everybody drives the Million Dollar Highway half of the San Juan Skyway. Almost nobody drives the other half, and that is the half with the gold on it. For about 18 dollars in gas you can cover the 125 miles from Telluride to Durango the back way. Climb south out of Telluride over Lizard Head Pass at 10,222 feet, where aspen groves close in on both sides and Wilson Peak stands straight ahead, the mountain off the Coors can. Drop through Rico, an old silver town of about 250 people, and follow the Dolores River down through yellow cottonwoods. Then turn up into Mesa Verde, where Cliff Palace sits 150 rooms deep inside a sandstone alcove, empty since the 1200s. Aspens peak the last week of September. Golden passes or no guardrails, which half wins?",
+    "googleMapsUrl": "https://www.google.com/maps/dir/Telluride%2C+CO/Lizard+Head+Pass%2C+CO/Rico%2C+CO/Mesa+Verde+National+Park%2C+CO/Durango%2C+CO",
+    "whyTrending": "This is the western leg of the San Juan Skyway, the half most leaf-peeping itineraries skip in favor of the Million Dollar Highway between Silverton and Ouray. Highway 145 over Lizard Head Pass at 10,222 feet is framed by aspen groves on both sides with the Wilson Peak and Mount Wilson fourteeners in view, and the Dolores River valley adds yellow cottonwoods under the gold. San Juan aspen color runs from mid-September near Silverton into early October around Dolores, with the last week of September through the first week of October the editorial sweet spot. Mesa Verde's Cliff Palace anchors the far end with 150 rooms built into a cliff in the 1200s. Reuses route 196's place hashtags so hashtag performance can be compared against a different visual payoff.",
+    "scriptDurationSeconds": 50,
+    "audioFile": "route-295-audio.wav",
+    "videoFile": "route-295-video.mp4",
+    "sfxFile": "car-voice-trimmed.wav",
+    "totalDistance": 125,
+    "captionStyle": 1,
+    "description": "$18 in gas. 125 miles. The half of the Skyway nobody drives. 🍂\n#sanjuanskyway #telluride #durango #colorado #roadtrip"
   }
 ]
