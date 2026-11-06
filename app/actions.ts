@@ -369,6 +369,28 @@ export async function togglePosted(id: string, posted: boolean) {
   return { ok: true };
 }
 
+// Flip an account_posts row's `posted` flag (multi-account Logbook tabs).
+// Same rules as togglePosted: any signed-in profile; records who posted it.
+export async function toggleAccountPost(id: string, posted: boolean) {
+  const profile = await requireProfile();
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("account_posts")
+    .update({
+      posted,
+      posted_at: posted ? new Date().toISOString() : null,
+      posted_by: posted ? profile.id : null,
+      posted_by_name: posted ? profile.name : null,
+    })
+    .eq("id", id)
+    .select("id");
+  if (error) return { error: error.message };
+  if (!data || data.length === 0)
+    return { error: "That entry no longer exists." };
+  revalidatePath("/logbook");
+  return { ok: true };
+}
+
 export async function adminImportRoutes(json: string) {
   await requireAdmin();
   let parsed: SourceRoute[];

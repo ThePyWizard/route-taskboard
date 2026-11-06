@@ -6,7 +6,12 @@ export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   // /jobs/* is the machine-readable job JSON consumed by the motwr CLI, which
   // has no profile cookie — keep it public.
-  const isPublic = path.startsWith("/join") || path.startsWith("/jobs");
+  // /api/uploads/* is the machine upload API for the employee Claude skill; it
+  // checks the UPLOAD_API_KEY bearer token itself.
+  const isPublic =
+    path.startsWith("/join") ||
+    path.startsWith("/jobs") ||
+    path.startsWith("/api/uploads");
   const hasProfile = request.cookies.has(PROFILE_COOKIE);
 
   if (!hasProfile && !isPublic) {

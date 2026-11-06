@@ -154,3 +154,25 @@ defaults (Terrain / Mercator / HD / red AUTO line / chat label / 9:16).
   and global `h1/h2`) + **Plus Jakarta Sans** (body). Use `text-[var(--ink)]` for
   strong text (never `text-white` except on the red/emerald buttons). The Google
   Maps CTA is the emerald `MapsButton`.
+
+## Multi-account Logbook + upload API (added 2026-11)
+
+Additive only - `profiles`, `routes` and `contents` are unchanged.
+
+- **Tables** (`supabase/migrations/002_social_accounts.sql`): `social_accounts`
+  (one row per Instagram handle; seeded with bygeoanimator, travelanimator.usa,
+  geostories.daily) and `account_posts` (video R2 key + caption + posted flag,
+  posted_at, posted_by). Add an account = insert a `social_accounts` row.
+- **Upload API** (public in middleware, guarded by the `UPLOAD_API_KEY` bearer
+  secret, `lib/uploadAuth.ts`): `GET /api/uploads/accounts`,
+  `POST /api/uploads/init {account, filename}` -> presigned R2 PUT URL + key
+  (keys are `accounts/<handle>/...`), then the caller PUTs the file, then
+  `POST /api/uploads/complete {account, video_key, caption, title?, uploaded_by?, notes?}`
+  HEAD-checks R2 and inserts the `account_posts` row.
+- **Logbook** (`app/logbook/page.tsx`): account chips across the top. The
+  default chip is @mapsoftheworldroutes (the original `contents` queue, same
+  behaviour as before); `?account=<handle>` shows that account's
+  `account_posts`. `PostCard kind="account"` flips posted via `toggleAccountPost`.
+- **Employee skill**: `skills/taskboard-upload/` (SKILL.md + stdlib-only
+  `scripts/upload.py`). Each user copies it to `~/.claude/skills/` and fills
+  `config.json` (url, key, name) - config.json is gitignored.

@@ -86,3 +86,7 @@ alter table public.contents enable row level security;
 -- Uploaded exports live in Cloudflare R2, NOT Supabase Storage (R2 has a far
 -- larger free tier and no per-file 50 MB cap). The app presigns R2 PUT/GET URLs
 -- server-side; see lib/r2.ts and app/actions.ts. Nothing to configure here.
+
+-- ---------- multi-account posting queues ----------
+-- social_accounts + account_posts (Instagram accounts fed by the upload API)
+-- are defined in supabase/migrations/002_social_accounts.sql. Run that file too.
