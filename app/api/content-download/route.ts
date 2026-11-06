@@ -24,7 +24,10 @@ export async function GET(req: NextRequest) {
 
   const routeId = key.split("/")[0];
   const ext = key.includes(".") ? key.split(".").pop()!.toLowerCase() : "mp4";
-  const filename = `route-${routeId}-video.${ext}`;
+  // Optional ?name= overrides the download filename (used by account posts,
+  // whose keys are accounts/<handle>/... rather than <routeId>/...).
+  const custom = (req.nextUrl.searchParams.get("name") ?? "").replace(/[^\w.-]+/g, "-");
+  const filename = custom || `route-${routeId}-video.${ext}`;
 
   const url = await getSignedUrl(
     r2(),

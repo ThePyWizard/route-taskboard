@@ -60,3 +60,31 @@ export interface SourceRoute {
   captionStyle?: number;
   description?: string;
 }
+
+// An Instagram account with its own posting queue (supabase/migrations/002).
+export interface SocialAccount {
+  id: string;
+  handle: string;
+  display_name: string | null;
+  platform: string;
+  active: boolean;
+  sort_order: number;
+  created_at: string;
+}
+
+// A video uploaded via /api/uploads/* waiting to be posted on a SocialAccount.
+export interface AccountPost {
+  id: string;
+  account_id: string;
+  title: string | null;
+  caption: string;
+  video_key: string;
+  video_bytes: number | null;
+  uploaded_by: string | null;
+  notes: string | null;
+  posted: boolean;
+  posted_at: string | null;
+  posted_by: string | null;
+  posted_by_name: string | null;
+  created_at: string;
+}

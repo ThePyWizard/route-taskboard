@@ -3,13 +3,28 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { Content } from "@/lib/types";
-import { togglePosted } from "@/app/actions";
+import { togglePosted, toggleAccountPost } from "@/app/actions";
 import { isDriveUrl } from "@/lib/drive";
 
 const btn =
   "rounded-lg border border-[var(--border)] bg-[var(--panel)] px-2.5 py-1 text-xs text-[var(--muted)] transition-colors hover:text-[var(--ink)] disabled:opacity-50";
 
-export function PostCard({ content }: { content: Content }) {
+// `kind="account"` renders an account_posts row (multi-account Logbook tabs),
+// mapped to the Content shape by the page; it flips posted via
+// toggleAccountPost and can show an uploader/posted-by line and a custom label.
+export function PostCard({
+  content,
+  kind = "content",
+  label,
+  meta,
+  downloadName,
+}: {
+  content: Content;
+  kind?: "content" | "account";
+  label?: string;
+  meta?: string;
+  downloadName?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const [armed, setArmed] = useState(false);
   const [dlState, setDlState] = useState<"idle" | "done">("idle");
@@ -30,7 +45,9 @@ export function PostCard({ content }: { content: Content }) {
     ? drive
       ? `/api/download?url=${encodeURIComponent(url)}&name=entry-${entry}.mp4`
       : url
-    : `/api/content-download?key=${encodeURIComponent(url)}`;
+    : `/api/content-download?key=${encodeURIComponent(url)}${
+        downloadName ? `&name=${encodeURIComponent(downloadName)}` : ""
+      }`;
   const openHref = external
     ? url
     : `/api/content-download?key=${encodeURIComponent(url)}&inline=1`;
@@ -62,7 +79,10 @@ export function PostCard({ content }: { content: Content }) {
     }
     setArmed(false);
     startTransition(async () => {
-      const res = await togglePosted(content.id, !content.posted);
+      const res =
+        kind === "account"
+          ? await toggleAccountPost(content.id, !content.posted)
+          : await togglePosted(content.id, !content.posted);
       if (res?.error) alert(res.error);
       router.refresh();
     });
@@ -80,7 +100,7 @@ export function PostCard({ content }: { content: Content }) {
     <article className="rounded-xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="flex items-center justify-between">
         <span className="font-display text-sm font-semibold text-[var(--muted)]">
-          Entry #{entry}
+          {label ?? `Entry #${entry}`}
         </span>
         {content.posted && (
           <span className="rounded-full bg-[var(--maps)]/10 px-2 py-0.5 text-xs font-medium text-[var(--maps)]">
@@ -88,6 +108,8 @@ export function PostCard({ content }: { content: Content }) {
           </span>
         )}
       </div>
+
+      {meta && <p className="mt-1 text-xs text-[var(--muted)]">{meta}</p>}
 
       <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-[var(--ink)]">
         {content.caption || <span className="text-[var(--muted)]">(no caption)</span>}
