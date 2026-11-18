@@ -5,12 +5,13 @@ Standard library only (works on Windows/macOS/Linux with Python 3.8+).
 
   python upload.py --accounts
   python upload.py --account bygeoanimator --file final.mp4 \
-      --caption-file caption.txt --title "Iceland ring road" --by "Rohit"
+      --caption-file caption.txt --title "Iceland ring road" --by "Rohit" \
+      --thumbnail thumb.jpg
 
 Config (first match wins): --url/--key flags, TASKBOARD_URL / TASKBOARD_UPLOAD_KEY
 env vars, or config.json next to this skill: {"url": "...", "key": "...", "by": "..."}
 """
-import argparse, json, os, sys, urllib.error, urllib.request
+import argparse, json, mimetypes, os, sys, urllib.error, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIG = os.path.join(os.path.dirname(HERE), "config.json")
@@ -63,11 +64,25 @@ class Progress:
         return self.total
 
 
+def put_file(upload_url, path, content_type):
+    size = os.path.getsize(path)
+    with open(path, "rb") as f:
+        put = urllib.request.Request(upload_url, data=Progress(f, size), method="PUT",
+                                     headers={"Content-Length": str(size), "Content-Type": content_type})
+        try:
+            with urllib.request.urlopen(put, timeout=3600) as r:
+                if r.status not in (200, 201):
+                    sys.exit(f"Storage upload failed: HTTP {r.status}")
+        except urllib.error.HTTPError as e:
+            sys.exit(f"Storage upload failed ({e.code}): {e.read()[:300]!r}")
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--accounts", action="store_true", help="list valid account handles")
     p.add_argument("--account", help="instagram handle, e.g. bygeoanimator")
     p.add_argument("--file", help="path to the final video (.mp4/.mov)")
+    p.add_argument("--thumbnail", default=None, help="optional cover image (.jpg/.png/.webp)")
     p.add_argument("--caption", default=None)
     p.add_argument("--caption-file", default=None)
     p.add_argument("--title", default=None)
@@ -86,6 +101,8 @@ def main():
         sys.exit("--account and --file are required (or use --accounts).")
     if not os.path.isfile(a.file):
         sys.exit(f"File not found: {a.file}")
+    if a.thumbnail and not os.path.isfile(a.thumbnail):
+        sys.exit(f"Thumbnail not found: {a.thumbnail}")
     caption = a.caption
     if a.caption_file:
         with open(a.caption_file, encoding="utf-8") as f:
@@ -97,19 +114,21 @@ def main():
     size = os.path.getsize(a.file)
     print(f"Uploading {os.path.basename(a.file)} ({size / 1e6:.1f} MB) to @{a.account.lstrip('@')}",
           file=sys.stderr)
-    with open(a.file, "rb") as f:
-        put = urllib.request.Request(init["upload_url"], data=Progress(f, size), method="PUT",
-                                     headers={"Content-Length": str(size), "Content-Type": "video/mp4"})
-        try:
-            with urllib.request.urlopen(put, timeout=3600) as r:
-                if r.status not in (200, 201):
-                    sys.exit(f"Storage upload failed: HTTP {r.status}")
-        except urllib.error.HTTPError as e:
-            sys.exit(f"Storage upload failed ({e.code}): {e.read()[:300]!r}")
+    put_file(init["upload_url"], a.file, "video/mp4")
+
+    thumbnail_key = None
+    if a.thumbnail:
+        t = api(base, key, "POST", "/api/uploads/init", {
+            "account": a.account, "filename": os.path.basename(a.thumbnail), "kind": "thumbnail"})
+        print(f"Uploading thumbnail {os.path.basename(a.thumbnail)}", file=sys.stderr)
+        put_file(t["upload_url"], a.thumbnail,
+                 mimetypes.guess_type(a.thumbnail)[0] or "image/jpeg")
+        thumbnail_key = t["thumbnail_key"]
 
     done = api(base, key, "POST", "/api/uploads/complete", {
         "account": a.account, "video_key": init["video_key"], "caption": caption or "",
         "title": a.title, "notes": a.notes, "uploaded_by": a.by or cfg_by,
+        "thumbnail_key": thumbnail_key,
     })
     print(json.dumps(done, indent=2))
 

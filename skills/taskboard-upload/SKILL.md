@@ -27,15 +27,19 @@ name. Never print the key back to the user or commit it.
    exists, draft one (hook line + 5-10 relevant hashtags), show it, and wait for
    approval before uploading. Write it to a UTF-8 text file so emojis and line
    breaks survive the shell.
-4. **Confirm once** in one line: file, account, title, first line of caption.
-5. **Upload:**
+4. **Thumbnail (optional).** If the user has a cover image for the post
+   (jpg/png/webp), pass it with `--thumbnail`; it shows up as a "Thumbnail"
+   download button next to the video in the Logbook. Don't make one up.
+5. **Confirm once** in one line: file, thumbnail (if any), account, title, first line of caption.
+6. **Upload:**
    ```
    python scripts/upload.py --account <handle> --file "<video path>" \
-     --caption-file "<caption.txt>" --title "<short title>"
+     --caption-file "<caption.txt>" --title "<short title>" \
+     [--thumbnail "<cover.jpg>"]
    ```
    Add `--notes "..."` for anything the poster should know (e.g. "post after 6pm").
    Large files take a while; progress prints every 10 %.
-6. **Report** the JSON result: the entry `id` and the `logbook_url`.
+7. **Report** the JSON result: the entry `id` and the `logbook_url`.
 
 ## Errors
 
