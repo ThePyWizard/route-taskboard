@@ -18,6 +18,8 @@ type Item = {
   label?: string;
   meta?: string;
   downloadName?: string;
+  thumbnailKey?: string;
+  thumbnailName?: string;
 };
 
 function fmt(d: string) {
@@ -85,6 +87,10 @@ export default async function LogbookPage({
         label: p.title ? `#${n} · ${p.title}` : `Entry #${n}`,
         meta: metaParts.join(" · "),
         downloadName: `${current.handle}-${n}.${ext}`,
+        thumbnailKey: p.thumbnail_key ?? undefined,
+        thumbnailName: p.thumbnail_key
+          ? `${current.handle}-${n}-thumbnail.${p.thumbnail_key.split(".").pop() ?? "jpg"}`
+          : undefined,
         content: {
           id: p.id,
           created_at: p.created_at,
@@ -180,6 +186,8 @@ export default async function LogbookPage({
                 label={i.label}
                 meta={i.meta}
                 downloadName={i.downloadName}
+                thumbnailKey={i.thumbnailKey}
+                thumbnailName={i.thumbnailName}
               />
             ))
           )}

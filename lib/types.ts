@@ -80,6 +80,7 @@ export interface AccountPost {
   caption: string;
   video_key: string;
   video_bytes: number | null;
+  thumbnail_key: string | null;
   uploaded_by: string | null;
   notes: string | null;
   posted: boolean;

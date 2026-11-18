@@ -18,16 +18,21 @@ export function PostCard({
   label,
   meta,
   downloadName,
+  thumbnailKey,
+  thumbnailName,
 }: {
   content: Content;
   kind?: "content" | "account";
   label?: string;
   meta?: string;
   downloadName?: string;
+  thumbnailKey?: string;
+  thumbnailName?: string;
 }) {
   const [copied, setCopied] = useState(false);
   const [armed, setArmed] = useState(false);
   const [dlState, setDlState] = useState<"idle" | "done">("idle");
+  const [thumbState, setThumbState] = useState<"idle" | "done">("idle");
   const [pending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -58,11 +63,22 @@ export function PostCard({
     setTimeout(() => setDlState("idle"), 2000);
   }
 
-  const dlClass =
-    dlState === "idle"
-      ? btn
-      : "rounded-lg px-2.5 py-1 text-xs font-medium text-white bg-emerald-600 transition-colors";
+  function flashThumb() {
+    setThumbState("done");
+    setTimeout(() => setThumbState("idle"), 2000);
+  }
+
+  const doneClass =
+    "rounded-lg px-2.5 py-1 text-xs font-medium text-white bg-emerald-600 transition-colors";
+  const dlClass = dlState === "idle" ? btn : doneClass;
   const dlLabel = dlState === "done" ? "Downloaded ✓" : "⬇ Download";
+
+  // Optional thumbnail (account posts only) — same presign-and-redirect route.
+  const thumbHref = thumbnailKey
+    ? `/api/content-download?key=${encodeURIComponent(thumbnailKey)}${
+        thumbnailName ? `&name=${encodeURIComponent(thumbnailName)}` : ""
+      }`
+    : null;
 
   async function copyCaption() {
     await navigator.clipboard.writeText(content.caption);
@@ -129,6 +145,16 @@ export function PostCard({
             className={dlClass}
           >
             {dlLabel}
+          </a>
+        )}
+
+        {thumbHref && (
+          <a
+            href={thumbHref}
+            onClick={flashThumb}
+            className={thumbState === "idle" ? btn : doneClass}
+          >
+            {thumbState === "done" ? "Downloaded ✓" : "⬇ Thumbnail"}
           </a>
         )}
 

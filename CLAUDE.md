@@ -169,6 +169,11 @@ Additive only - `profiles`, `routes` and `contents` are unchanged.
   (keys are `accounts/<handle>/...`), then the caller PUTs the file, then
   `POST /api/uploads/complete {account, video_key, caption, title?, uploaded_by?, notes?}`
   HEAD-checks R2 and inserts the `account_posts` row.
+- **Thumbnails** (`supabase/migrations/003_account_post_thumbnails.sql`, adds
+  `account_posts.thumbnail_key`): same flow - `POST /api/uploads/init
+  {account, filename, kind:"thumbnail"}` (jpg/png/webp, key
+  `accounts/<handle>/thumbs/...`), PUT, then pass `thumbnail_key` to `/complete`.
+  The Logbook `PostCard` shows a "Thumbnail" download button when it is set.
 - **Logbook** (`app/logbook/page.tsx`): account chips across the top. The
   default chip is @mapsoftheworldroutes (the original `contents` queue, same
   behaviour as before); `?account=<handle>` shows that account's

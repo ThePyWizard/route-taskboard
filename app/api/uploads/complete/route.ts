@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 // Step 3 of 3 (after the PUT). Confirms the file really landed in R2, then
 // queues it in that account's Logbook tab.
 //   POST /api/uploads/complete
-//   { account, video_key, caption, title?, uploaded_by?, notes? }
+//   { account, video_key, caption, title?, uploaded_by?, notes?, thumbnail_key? }
 //   -> { id, account, logbook_url }
 export async function POST(req: Request) {
   const denied = checkUploadKey(req);
@@ -42,6 +42,25 @@ export async function POST(req: Request) {
     );
   }
 
+  // Optional thumbnail, uploaded via /init with kind="thumbnail".
+  const thumbnail_key = body?.thumbnail_key ? String(body.thumbnail_key) : null;
+  if (thumbnail_key) {
+    if (!thumbnail_key.startsWith(`accounts/${account.handle}/thumbs/`)) {
+      return NextResponse.json(
+        { error: "thumbnail_key does not belong to this account - use the key returned by /init (kind=thumbnail)." },
+        { status: 400 },
+      );
+    }
+    try {
+      await r2().send(new HeadObjectCommand({ Bucket: R2_BUCKET, Key: thumbnail_key }));
+    } catch {
+      return NextResponse.json(
+        { error: "No file found at thumbnail_key - the thumbnail PUT did not finish." },
+        { status: 400 },
+      );
+    }
+  }
+
   const str = (v: unknown, max: number) =>
     v == null ? null : String(v).slice(0, max).trim() || null;
 
@@ -57,6 +76,8 @@ export async function POST(req: Request) {
         title: str(body?.title, 200),
         uploaded_by: str(body?.uploaded_by, 100),
         notes: str(body?.notes, 2000),
+        // Only sent when given, so a re-complete without one keeps the old thumbnail.
+        ...(thumbnail_key ? { thumbnail_key } : {}),
       },
       { onConflict: "video_key" },
     )
